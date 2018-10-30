@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "../Grid";
+import "./ResultList.css";
 
 export const ResultList = props => (
     <Container>

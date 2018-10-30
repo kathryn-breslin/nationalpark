@@ -7,6 +7,10 @@ const API = {
         const BASEURL = "https://" + APIKEY+ "@api.nps.gov/api/v1/parks?q=" + searchTerm ;
 
         return axios.get(BASEURL);
+    }, 
+
+    getPark: function() {
+        return axios.get("/api/parks")
     }
 }; 
 

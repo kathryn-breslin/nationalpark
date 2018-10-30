@@ -10,8 +10,9 @@ app.use(express.json());
 
 app.use(express.static("client/public"));
 
-const userRoutes = require("./routes/user.js");
-app.use(userRoutes);
+app.use(routes);
+// const userRoutes = require("./routes/user.js");
+// app.use(userRoutes);
 
 
 mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/nationalPark");

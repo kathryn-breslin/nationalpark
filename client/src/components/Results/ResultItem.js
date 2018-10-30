@@ -1,13 +1,16 @@
 import React from "react";
+import "./ResultItem.css";
 import { Container, Row, Col } from "../Grid";
 
 export const ResultItem = props => (
     <li className="list-group-item" id="item">
         <Container>
             <Row>
-                <Col size="md-12">
+                <Col size="md-12" key={props.id} id={props.id}>
                 <h3>{props.name}</h3>
-                <h4>{props.description}</h4>
+                <p>{props.description}</p>
+                <br></br>
+                <a rel="noreferrer noopener" target="_blank" href={props.url}>Read More</a>
                 </Col>
             </Row>
         </Container>

@@ -13,23 +13,27 @@ class Home extends Component {
     };
 
     componentDidMount() {
-        this.searchParks();
+        this.getParkFromDatabase();
     }
 
-    searchParks = () => {
-        API.searchParks()
+    getParkFromDatabase = () => {
+        API.getPark()
             .then((res) => {
                 this.setState({ renderResults: res.data })
             })
     }
 
-    renderResults = () => {
+    showResults = () => {
         return this.state.results.map(result => (
             <ResultItem
-                name={result.designation}
+                _id={result.id}
+                key={result.id}
+                name={result.fullName}
                 description={result.description}
+                url={result.url}
+                getParkFromDatabase={this.getParkFromDatabase}
             />
-        ))
+        ));
     }
 
     handleSearch = event => {
@@ -41,7 +45,7 @@ class Home extends Component {
         console.log(this.state.searchTerm)
         API.searchParks(this.state.searchTerm)
             .then((res) => {
-                this.setState({ results: res.data })
+                this.setState({ results: res.data.data })
                 console.log("this.state.results", this.state.results)
             })
     }
@@ -56,14 +60,14 @@ class Home extends Component {
                             <SearchForm
                             handleSearch={this.handleSearch}
                             handleFormSearch={this.handleFormSearch}
-                            renderResults={this.renderResults}
+                            showResults={this.showResults}
                             />
                         </Col>
                     </Row>
                     <Row>
                         <Col size="md-12">
                             <ResultList>
-                                {this.renderResults()}
+                                {this.showResults()}
                             </ResultList>
                         </Col>
                     </Row>
