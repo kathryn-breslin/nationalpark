@@ -1,0 +1,10 @@
+div #homeJumbo {
+    background-image: url('../../assets/images/glacier.jpg');
+    /* position: fixed; */
+    /* width: 100%; */
+    /* top: 0;
+    left: 0; */
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

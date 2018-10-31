@@ -9,8 +9,12 @@ const API = {
         return axios.get(BASEURL);
     }, 
 
-    getPark: function() {
+    getParks: function() {
         return axios.get("/api/parks")
+    }, 
+
+    getPark: function(id) {
+        return axios.get("/api/parks" + id)
     }
 }; 
 

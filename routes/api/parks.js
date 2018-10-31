@@ -5,4 +5,9 @@ router.route("/")
     .get(parkController.find)
     .post(parkController.insert)
 
- module.exports = router;
+router.route("/:id")
+    .get(parkController.findById)
+    .put(parkController.update)
+    .delete(parkController.remove)
+
+module.exports = router;

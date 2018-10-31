@@ -11,6 +11,7 @@ export const ResultItem = props => (
                 <p>{props.description}</p>
                 <br></br>
                 <a rel="noreferrer noopener" target="_blank" href={props.url}>Read More</a>
+                <a href={"/parks" + props._id}>More Info About Park</a>
                 </Col>
             </Row>
         </Container>
