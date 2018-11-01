@@ -28,6 +28,7 @@ const Nav = () => (
         >Log In</Link>
     </li>
   </ul>
+
 );
 
 export default Nav;

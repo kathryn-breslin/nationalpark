@@ -14,7 +14,11 @@ const API = {
     }, 
 
     getPark: function(id) {
-        return axios.get("/api/parks" + id)
+        return axios.get("/api/parks/" + id)
+    },
+
+    savePark: function(parkData) {
+        return axios.post("/api/parks/", parkData)
     }
 }; 
 

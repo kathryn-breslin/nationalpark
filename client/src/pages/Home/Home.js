@@ -10,7 +10,10 @@ import "./Home.css";
 class Home extends Component {
     state = {
         parks: [],
-        searchTerm: ""
+        searchTerm: "",
+        name: "",
+        description: "", 
+        url: ""
     };
 
     componentDidMount() {
@@ -24,14 +27,25 @@ class Home extends Component {
             })
     }
 
+    // saveParkInfo = () => {
+    //     if(this.state.name && this.state.description) {
+    //         API.getPark({
+    //             name: this.state.name,
+    //             description: this.state.description
+    //         })
+    //         .then(res => this.getParks())
+    //         .catch(err => console.log(err))
+    //     }
+    // }
+
     showResults = () => {
-        return this.state.parks.map(result => (
+        return this.state.parks.map(park => (
             <ResultItem
-                _id={result.id}
-                key={result.id}
-                name={result.fullName}
-                description={result.description}
-                url={result.url}
+                _id={park.id}
+                key={park.id}
+                name={park.fullName}
+                description={park.description}
+                url={park.url}
                 getParkFromDatabase={this.getParkFromDatabase}>
             </ResultItem>
         ));

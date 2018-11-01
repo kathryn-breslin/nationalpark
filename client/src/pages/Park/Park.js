@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ParkPage from "../../components/ParkPage";
 import { Link } from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
 import { Container, Row, Col } from "../../components/Grid";
@@ -9,35 +10,36 @@ class Park extends Component {
         park: {}
     }
 
-    // componentDidMount() {
-    //     API.getPark(this.props.match.params.id)
-    //         .then(res => this.setState({ park: res.data }))
-    //         .catch(err => console.log(err));
-    // }
+    handlePark() {
+        API.getPark(this.props.match.params.id)
+            .then(res => this.setState({ park: res.data }))
+            .catch(err => console.log(err));
+    }
+
     render() {
         return (
             <Container fluid>
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
-                            {this.state.park.name}
+                            <h1>{this.state.park.name}</h1>
                         </Jumbotron>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col size="md-12">
-                        <h1>Info About This Park</h1>
-                        <p>{this.state.park.description}</p>
+                        <ParkPage>
+                            {this.state.park.description}
+                        </ParkPage>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col size="md-12">
                         <Link to="/">Back to Home</Link>
                     </Col>
                 </Row>
             </Container>
+
         )
     }
 }
