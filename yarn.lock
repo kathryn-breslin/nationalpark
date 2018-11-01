@@ -664,6 +664,11 @@ kareem@2.3.0:
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.0.tgz#ef33c42e9024dce511eeaf440cd684f3af1fc769"
   integrity sha512-6hHxsp9e6zQU8nXsP+02HGWXwTkOEw6IROhF2ZA28cYbUk4eJ6QbtZvdqZOdD9YPKghG3apk5eOCvs+tLl3lRg==
 
+keymaster@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/keymaster/-/keymaster-1.6.2.tgz#e1ae54d0ea9488f9f60b66b668f02e9a1946c6eb"
+  integrity sha1-4a5U0OqUiPn2C2a2aPAumhlGxus=
+
 lcid@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
@@ -1181,6 +1186,13 @@ react-popper@^0.10.4:
   dependencies:
     popper.js "^1.14.1"
     prop-types "^15.6.1"
+
+react-popup@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/react-popup/-/react-popup-0.9.3.tgz#fbe9a7adf3afc9167123a6f9f4c730ca33da6ccb"
+  integrity sha512-w6bC/Yo+ybe76npOGwoZyGC2f5IaNpHp5GP/Oa63RpYJKn/hERstMCkKMHrTyWNCkxCK+DCpizkQs9DdhBL/HA==
+  dependencies:
+    keymaster "^1.6.2"
 
 react-transition-group@^2.3.1:
   version "2.5.0"

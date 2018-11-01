@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+// import ReactDom from "react-dom";
+import Popup from "react-popup";
 import Login from "../../components/Login";
 // import { Link } from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
 import { Container, Row, Col } from "../../components/Grid";
-// import API from "../../utils/API";
+import USER from "../../utils/USER";
 
 class User extends Component {
     state = {
@@ -22,6 +24,26 @@ class User extends Component {
 
     }
 
+    handleLoginInfo = event => {
+        event.preventDefault();
+        console.log(this.state.username);
+        console.log(this.state.password);
+        if(this.state.username && this.state.password) {
+            USER.saveUser({
+                username: this.state.username,
+                password: this.state.password
+            })
+            .then(res => this.loadConfirmation())
+            .catch(err => console.log(err));
+        }
+    }
+
+    loadConfirmation = () => {
+        return (
+            Popup.alert("Thanks for joining," + this.state.username + " !")
+        )
+    }
+
     render() {
         return (
             <div>
@@ -35,6 +57,7 @@ class User extends Component {
                             <Login
                                 inputUser={this.inputUser}
                                 inputPassword={this.inputPassword}
+                                loadConfirmation={this.loadConfirmation}
                             />
                         </Col>
                     </Row>

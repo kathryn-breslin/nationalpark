@@ -11,14 +11,14 @@ const Nav = () => (
         }
         >Home</Link>
     </li>
-    <li className="nav-item">
+    {/* <li className="nav-item">
       <Link
         to="/parks"
         className={
           window.location.pathname === "/parks" ? "nav-link active" : "nav-link"
         }
         >Parks</Link>
-    </li>
+    </li> */}
     <li className="nav-item">
       <Link
         to="/user"

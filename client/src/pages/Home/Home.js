@@ -4,7 +4,7 @@ import SearchForm from "../../components/SearchForm";
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 import { ResultItem, ResultList } from "../../components/Results";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 class Home extends Component {
@@ -12,7 +12,7 @@ class Home extends Component {
         parks: [],
         searchTerm: "",
         name: "",
-        description: "", 
+        description: "",
         url: ""
     };
 
@@ -40,14 +40,16 @@ class Home extends Component {
 
     showResults = () => {
         return this.state.parks.map(park => (
-            <ResultItem
-                _id={park.id}
-                key={park.id}
-                name={park.fullName}
-                description={park.description}
-                url={park.url}
-                getParkFromDatabase={this.getParkFromDatabase}>
-            </ResultItem>
+            <ResultList>
+                <ResultItem
+                    _id={park._id}
+                    key={park._id}
+                    name={park.fullName}
+                    description={park.description}
+                    url={park.url}
+                    getParkFromDatabase={this.getParkFromDatabase}>
+                </ResultItem>
+            </ResultList>
         ));
     }
 
@@ -73,17 +75,17 @@ class Home extends Component {
                     <Row>
                         <Col size="md-12">
                             <SearchForm
-                            handleSearch={this.handleSearch}
-                            handleFormSearch={this.handleFormSearch}
-                            showResults={this.showResults}
+                                handleSearch={this.handleSearch}
+                                handleFormSearch={this.handleFormSearch}
+                                showResults={this.showResults}
                             />
                         </Col>
                     </Row>
                     <Row>
                         <Col size="md-12">
-                            <ResultList>
+                            {/* <ResultList> */}
                                 {this.showResults()}
-                            </ResultList>
+                            {/* </ResultList> */}
                         </Col>
                     </Row>
                 </Container>
