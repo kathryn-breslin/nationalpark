@@ -48,7 +48,7 @@ class User extends Component {
         return (
             <div>
                 <Jumbotron>
-                    <h1>Join the NP Club!</h1>
+                    <h1>Join the NP Association</h1>
                 </Jumbotron>
 
                 <Container fluid>

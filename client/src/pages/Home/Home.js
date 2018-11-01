@@ -4,7 +4,7 @@ import SearchForm from "../../components/SearchForm";
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 import { ResultItem, ResultList } from "../../components/Results";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Home.css";
 
 class Home extends Component {
@@ -22,9 +22,10 @@ class Home extends Component {
 
     getParkFromDatabase = () => {
         API.getParks()
-            .then((res) => {
-                this.setState({ renderResults: res.data })
-            })
+            .then(res => 
+                this.setState({ parks: res.data })
+            )
+            .catch(err => console.log(err));
     }
 
     // saveParkInfo = () => {
@@ -47,7 +48,8 @@ class Home extends Component {
                     name={park.fullName}
                     description={park.description}
                     url={park.url}
-                    getParkFromDatabase={this.getParkFromDatabase}>
+                    getParkFromDatabase={this.getParkFromDatabase}
+                    >
                 </ResultItem>
             </ResultList>
         ));

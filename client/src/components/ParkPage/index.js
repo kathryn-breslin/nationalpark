@@ -1,1 +1,1 @@
-export  {default } from "./ParkPage"
+export { default } from "./ParkPage"
