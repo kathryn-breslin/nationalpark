@@ -11,7 +11,8 @@ const Login = props =>
                 <br></br>
                 <label for="passWord">Password:</label>
                 <input name="passWord" onChange={props.inputPassword} type="text" className="form-control"/>
-            <button onClick={props.handleLoginInfo} type="text" className="btn btn-primary btn-lg btn-block">Join!</button>
+                <br></br>
+                <button onClick={props.handleLoginInfo} type="text" className="btn btn-primary btn-lg btn-block">Join!</button>
             </form>
         </div>
     </div>

@@ -2,14 +2,14 @@ const db = require("../models");
 
 module.exports = {
     find: function (req, res) {
-        db.Park.find().then(function (data) {
+        db.User.find().then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         });
     },
     findById: function (req, res) {
-        db.Park.findById(req.params.id)
+        db.User.findById(req.params.id)
             .then(function (data) {
                 res.json(data);
             }).catch(function (err) {
@@ -17,14 +17,14 @@ module.exports = {
             })
     },
     insert: function (req, res) {
-        db.Park.create(req.body).then(function (data) {
+        db.User.create(req.body).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         });
     },
     update: function (req, res) {
-        db.Park.findOneAndUpdate({ _id: req.params.id }, req.body)
+        db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(function (data) {
                 res.json(data);
             }).catch(function (err) {
@@ -32,7 +32,7 @@ module.exports = {
             });
     },
     remove: function (req, res) {
-        db.Park.findById({ _id: req.params.id })
+        db.User.findById({ _id: req.params.id })
             .then(function (data) {
                 res.json(data);
             }).catch(function (err) {

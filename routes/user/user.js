@@ -1,21 +1,13 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
+const userController = require("../../controllers/userController");
 
-router.get("/api/user", function(req, res){
-    res.send("Get Users")
-});
+router.route("/")
+    .get(userController.find)
+    .post(userController.insert)
 
-router.post("/api/user", function(req, res){
-    res.send("Post Users")
-})
-
-router.put("/api/user/:id", function(req, res){
-    res.send("Update Users")
-})
-
-router.delete("/api/user/:id", function(req, res){
-    res.send("Delete Users")
-})
-
+router.route("/:id")
+    .get(userController.findById)
+    .put(userController.update)
+    .delete(userController.remove)
 
 module.exports = router;
