@@ -2,9 +2,10 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "axios": "^0.18.0",
+    "mongoose": "^5.3.8",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-popup": "^0.9.3",

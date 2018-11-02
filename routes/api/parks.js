@@ -2,8 +2,8 @@ const router = require("express").Router();
 const parkController = require("../../controllers/parkController");
 
 router.route("/")
-    .get(parkController.find)
-    .post(parkController.insert)
+    .get(parkController.findAll)
+    .post(parkController.create)
 
 router.route("/:id")
     .get(parkController.findById)

@@ -4,7 +4,7 @@ import SearchForm from "../../components/SearchForm";
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 import { ResultItem, ResultList } from "../../components/Results";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 class Home extends Component {
@@ -22,22 +22,11 @@ class Home extends Component {
 
     getParkFromDatabase = () => {
         API.getParks()
-            .then(res => 
+            .then(res =>
                 this.setState({ parks: res.data })
             )
             .catch(err => console.log(err));
     }
-
-    // saveParkInfo = () => {
-    //     if(this.state.name && this.state.description) {
-    //         API.getPark({
-    //             name: this.state.name,
-    //             description: this.state.description
-    //         })
-    //         .then(res => this.getParks())
-    //         .catch(err => console.log(err))
-    //     }
-    // }
 
     showResults = () => {
         return this.state.parks.map(park => (
@@ -49,7 +38,7 @@ class Home extends Component {
                     description={park.description}
                     url={park.url}
                     getParkFromDatabase={this.getParkFromDatabase}
-                    >
+                >
                 </ResultItem>
             </ResultList>
         ));
@@ -66,6 +55,9 @@ class Home extends Component {
             .then((res) => {
                 this.setState({ parks: res.data.data })
                 console.log("this.state.parks", this.state.parks)
+                // API.savePark({
+                //     parkData: res.data.data
+                // })
             })
     }
 
@@ -86,7 +78,7 @@ class Home extends Component {
                     <Row>
                         <Col size="md-12">
                             {/* <ResultList> */}
-                                {this.showResults()}
+                            {this.showResults()}
                             {/* </ResultList> */}
                         </Col>
                     </Row>
@@ -95,6 +87,4 @@ class Home extends Component {
         )
     }
 }
-
-
 export default Home;

@@ -1,7 +1,7 @@
 const db = require("../models");
 
 module.exports = {
-    find: function (req, res) {
+    findAll: function (req, res) {
         db.Park.find().then(function (data) {
             res.json(data);
         }).catch(function (err) {
@@ -16,12 +16,12 @@ module.exports = {
                 res.json(err);
             })
     },
-    insert: function (req, res) {
-        db.Park.create(req.body).then(function (data) {
-            res.json(data);
-        }).catch(function (err) {
-            res.json(err);
-        });
+    create: function (req, res) {
+        // db.Park.create(req.body).then(function (data) {
+        //     res.json(data);
+        // }).catch(function (err) {
+        //     res.json(err);
+        // });
     },
     update: function (req, res) {
         db.Park.findOneAndUpdate({ _id: req.params.id }, req.body)

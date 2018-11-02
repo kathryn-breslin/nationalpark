@@ -11,6 +11,7 @@ const App = () => (
       <Nav />
       <Route exact path="/" component={Home}/>
       <Route exact path="/parks" component={Park}/>
+      <Route exact path="/parks/:id" component={Park}/>
       <Route exact path="/user" component={User}/>
     </div>
   </Router>

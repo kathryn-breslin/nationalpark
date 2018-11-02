@@ -11,16 +11,14 @@ class Park extends Component {
     }
 
     componentDidMount() {
-        API.getPark(this.props.match.params.id)
-        .then(res => this.setState({ park: res.data }))
-        .catch(err => console.log(err));
+        this.handlePark();
     }
 
-    // handlePark() {
-    //     API.getPark(this.props.match.params.id)
-    //         .then(res => this.setState({ park: res.data }))
-    //         .catch(err => console.log(err));  
-    // }
+    handlePark(id) {
+        API.getPark(this.props.match.params.id)
+            .then(res => this.setState({ park: res.data }))
+            .catch(err => console.log(err));  
+    }
 
     render() {
         return (

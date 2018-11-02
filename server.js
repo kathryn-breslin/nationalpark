@@ -2,15 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 app.use(express.static("client/public"));
 
-const apiRoutes = require("./routes/api")
-app.use(apiRoutes);
+const parkRoutes = require("./routes/api")
+app.use(parkRoutes);
 
 const userRoutes = require("./routes/user");
 app.use(userRoutes);
