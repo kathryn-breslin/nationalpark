@@ -17,11 +17,11 @@ module.exports = {
             })
     },
     create: function (req, res) {
-        // db.Park.create(req.body).then(function (data) {
-        //     res.json(data);
-        // }).catch(function (err) {
-        //     res.json(err);
-        // });
+        db.Park.create(req.body).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        });
     },
     update: function (req, res) {
         db.Park.findOneAndUpdate({ _id: req.params.id }, req.body)

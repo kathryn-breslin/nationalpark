@@ -4,7 +4,7 @@ import SearchForm from "../../components/SearchForm";
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 import { ResultItem, ResultList } from "../../components/Results";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Home.css";
 
 class Home extends Component {
