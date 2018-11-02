@@ -55,9 +55,9 @@ class Home extends Component {
             .then((res) => {
                 this.setState({ parks: res.data.data })
                 console.log("this.state.parks", this.state.parks)
-                // API.savePark({
-                //     parkData: res.data.data
-                // })
+                API.savePark({
+                    parkData: res.data.data
+                })
             })
     }
 

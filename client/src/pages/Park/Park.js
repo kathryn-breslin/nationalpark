@@ -14,7 +14,7 @@ class Park extends Component {
         this.handlePark();
     }
 
-    handlePark(id) {
+    handlePark() {
         API.getPark(this.props.match.params.id)
             .then(res => this.setState({ park: res.data }))
             .catch(err => console.log(err));  
