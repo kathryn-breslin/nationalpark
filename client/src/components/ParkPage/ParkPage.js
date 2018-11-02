@@ -6,7 +6,7 @@ export const ParkPage = props => (
     <div>
         <Container>
             <Row>
-                <Col size="md-12" key={props._id} id={props._id}>
+                <Col size="md-12" key={props.id} id={props.id}>
                     <h3>{props.name}</h3>
                     <p>{props.description}</p>
                     <br></br>

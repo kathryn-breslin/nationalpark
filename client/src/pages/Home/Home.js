@@ -17,10 +17,10 @@ class Home extends Component {
     };
 
     componentDidMount() {
-        this.getParkFromDatabase();
+        this.loadParks();
     }
 
-    getParkFromDatabase = () => {
+    loadParks = () => {
         API.getParks()
             .then(res =>
                 this.setState({ parks: res.data })
@@ -32,8 +32,8 @@ class Home extends Component {
         return this.state.parks.map(park => (
             <ResultList>
                 <ResultItem
-                    _id={park._id}
-                    key={park._id}
+                    _id={park.id}
+                    key={park.id}
                     name={park.fullName}
                     description={park.description}
                     url={park.url}
@@ -55,9 +55,9 @@ class Home extends Component {
             .then((res) => {
                 this.setState({ parks: res.data.data })
                 console.log("this.state.parks", this.state.parks)
-                API.savePark({
-                    parkData: res.data.data
-                })
+                // API.savePark({
+                    // SAVE INFO HERE?
+                // })
             })
     }
 
@@ -77,9 +77,7 @@ class Home extends Component {
                     </Row>
                     <Row>
                         <Col size="md-12">
-                            {/* <ResultList> */}
                             {this.showResults()}
-                            {/* </ResultList> */}
                         </Col>
                     </Row>
                 </Container>
