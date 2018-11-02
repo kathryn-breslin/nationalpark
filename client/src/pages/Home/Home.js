@@ -55,10 +55,15 @@ class Home extends Component {
             .then((res) => {
                 this.setState({ parks: res.data.data })
                 console.log("this.state.parks", this.state.parks)
-                // API.savePark({
-                    // SAVE INFO HERE?
-                // })
+                this.saveParks(this.state.parks);
             })
+    }
+
+    saveParks = parksArray => {
+        console.log("Save me", parksArray);
+        for(let i = 0; i < parksArray.length; i++){
+            API.savePark(parksArray[i])
+        }
     }
 
     render() {
