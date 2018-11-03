@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ParkPage from "../../components/ParkPage";
+// import ParkPage from "../../components/ParkPage";
 import { Link } from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
 import { Container, Row, Col } from "../../components/Grid";
@@ -32,9 +32,7 @@ class Park extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        <ParkPage>
-                            {this.state.park.description}
-                        </ParkPage>
+                        {this.state.park.description}
                     </Col>
                 </Row>
                 <Row>

@@ -11,9 +11,6 @@ class Home extends Component {
     state = {
         parks: [],
         searchTerm: "",
-        name: "",
-        description: "",
-        url: ""
     };
 
     componentDidMount() {
@@ -28,22 +25,6 @@ class Home extends Component {
             .catch(err => console.log(err));
     }
 
-    showResults = () => {
-        return this.state.parks.map(park => (
-            <ResultList>
-                <ResultItem
-                    _id={park.id}
-                    key={park.id}
-                    name={park.fullName}
-                    description={park.description}
-                    url={park.url}
-                    getParkFromDatabase={this.getParkFromDatabase}
-                >
-                </ResultItem>
-            </ResultList>
-        ));
-    }
-
     handleSearch = event => {
         this.setState({ searchTerm: event.target.value })
     }
@@ -55,6 +36,8 @@ class Home extends Component {
             .then((res) => {
                 this.setState({ parks: res.data.data })
                 console.log("this.state.parks", this.state.parks)
+            }).then((res) => {
+                this.loadParks();
                 this.saveParks(this.state.parks);
             })
     }
@@ -64,6 +47,27 @@ class Home extends Component {
         for(let i = 0; i < parksArray.length; i++){
             API.savePark(parksArray[i])
         }
+    }
+
+    handleClearPage = event => {
+        event.preventDefault();
+        console.log("Clearing page..");
+        API.deleteParks(this.state.parks)
+    }
+
+    showResults = () => {
+        return this.state.parks.map(park => (
+            <ResultList>
+                <ResultItem
+                    id={park._id}
+                    key={park._id}
+                    name={park.name}
+                    description={park.description}
+                    url={park.url}                                        
+                >
+                </ResultItem>
+            </ResultList>
+        ));
     }
 
     render() {
@@ -77,6 +81,7 @@ class Home extends Component {
                                 handleSearch={this.handleSearch}
                                 handleFormSearch={this.handleFormSearch}
                                 showResults={this.showResults}
+                                handleClearPage={this.handleClearPage}
                             />
                         </Col>
                     </Row>

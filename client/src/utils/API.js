@@ -19,6 +19,10 @@ const API = {
 
     savePark: function(parkData) {
         return axios.post("/api/parks/", parkData)
+    }, 
+
+    deleteParks: function(){
+        return axios.delete("/api/parks")
     }
 }; 
 

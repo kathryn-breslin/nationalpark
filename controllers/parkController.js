@@ -31,12 +31,19 @@ module.exports = {
                 res.json(err);
             });
     },
-    remove: function (req, res) {
-        db.Park.findById({ _id: req.params.id })
-            .then(function (data) {
-                res.json(data);
-            }).catch(function (err) {
-                res.json(data);
-            })
+    // remove: function (req, res) {
+    //     db.Park.findById({ _id: req.params.id })
+    //         .then(function (data) {
+    //             res.json(data);
+    //         }).catch(function (err) {
+    //             res.json(data);
+    //         })
+    // }
+    remove: function(req, res) {
+        db.Park.remove().then(function(data) {
+            res.json(data);
+        }).catch(function(err) {
+            res.json(err);
+        });
     }
 }

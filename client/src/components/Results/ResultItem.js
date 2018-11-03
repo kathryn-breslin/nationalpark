@@ -10,8 +10,9 @@ export const ResultItem = props => (
                 <h3>{props.name}</h3>
                 <p>{props.description}</p>
                 <br></br>
-                <a rel="noreferrer noopener" target="_blank" href={props.url}>Read More</a>
-                <a href={"/api/parks/" + props.id} onClick={props.handlePark}>More Info About Park</a>
+                <a href={"/api/parks/" + props.id} onClick={props.handlePark}>More Info About {props.name}</a>
+                <br></br>
+                <a rel="noreferrer noopener" target="_blank" href={props.url}>Offical Website</a>
                 </Col>
             </Row>
         </Container>

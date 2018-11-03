@@ -10,6 +10,7 @@ const SearchForm = props =>
                 <input name="searchTerm" placeholder="Ex. 'California'" onChange={props.handleSearch} type="text" className="form-control"/>
                 <br></br>
                 <button onClick={props.handleFormSearch} type="text" className="btn btn-primary btn-lg btn-block">Search</button>
+                <button onClick={props.handleClearPage} type="text" className="btn btn-primary btn-lg btn-block">Clear Results</button>
             </form>
         </div>
     </div>
