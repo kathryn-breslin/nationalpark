@@ -5,7 +5,7 @@ import Login from "../../components/Login";
 // import { Link } from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
 import { Container, Row, Col } from "../../components/Grid";
-import USER from "../../utils/USER";
+import API from "../../utils/API";
 
 class User extends Component {
     state = {
@@ -29,7 +29,7 @@ class User extends Component {
         console.log(this.state.username);
         console.log(this.state.password);
         if(this.state.username && this.state.password) {
-            USER.saveUser({
+            API.saveUser({
                 username: this.state.username,
                 password: this.state.password
             })

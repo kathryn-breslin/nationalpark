@@ -36,8 +36,6 @@ class Home extends Component {
             .then((res) => {
                 this.setState({ parks: res.data.data })
                 console.log("this.state.parks", this.state.parks)
-            }).then((res) => {
-                this.loadParks();
                 this.saveParks(this.state.parks);
             })
     }
@@ -49,21 +47,24 @@ class Home extends Component {
         }
     }
 
-    handleClearPage = event => {
-        event.preventDefault();
-        console.log("Clearing page..");
-        API.deleteParks(this.state.parks)
-    }
+    // handleClearPage = event => {
+    //     event.preventDefault();
+    //     console.log("Clearing page..");
+    //     API.deleteParks({})
+    // }
 
     showResults = () => {
         return this.state.parks.map(park => (
             <ResultList>
                 <ResultItem
-                    id={park._id}
+                    id={park._id} 
                     key={park._id}
                     name={park.name}
                     description={park.description}
-                    url={park.url}                                        
+                    url={park.url}  
+                    weather={park.weather}
+                    directions={park.directions}
+                    latLong={park.latLong}                                      
                 >
                 </ResultItem>
             </ResultList>

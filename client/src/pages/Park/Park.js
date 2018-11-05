@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 // import ParkPage from "../../components/ParkPage";
+import Map from "../../components/Map";
+import Images from "../../components/Images";
 import { Link } from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
-import { Container, Row, Col } from "../../components/Grid";
+import { Row, Col } from "../../components/Grid";
 import API from "../../utils/API";
 
 class Park extends Component {
     state = {
-        park: {}
+        park: {},
+        images: []
     }
 
     componentDidMount() {
@@ -17,12 +20,33 @@ class Park extends Component {
     handlePark() {
         API.getPark(this.props.match.params.id)
             .then(res => this.setState({ park: res.data }))
-            .catch(err => console.log(err));  
+            .catch(err => console.log(err));
+            this.getImages();
+    }
+
+    // getMap() {
+    //     const keyword = this.state.park.name
+    //     // const long = this.state.park.latLong.long
+    //     console.log(keyword)
+    //     API.getMap(keyword)
+    //         .then((res) => {
+    //             console.log("Location: " + keyword)
+    //         })
+    // }
+    getImages() {
+        const search = this.state.park.name;
+        console.log("This is what should be searched: " + search)
+
+        // API.getImages(this.state.search)
+        //     .then((res) => {
+        //         this.setState({ images: res.data })
+        //         console.log("this.state.images: ", this.state.images)
+        //     })
     }
 
     render() {
         return (
-            <Container fluid>
+        <div>
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
@@ -31,16 +55,43 @@ class Park extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col size="md-12">
-                        {this.state.park.description}
+                    <Col size="md-2"></Col>
+                    <Col size="md-8">
+                        <h5>
+                            {this.state.park.description}
+                        </h5>
+                        <br></br>
                     </Col>
+                    <Col size="md-2"></Col>
+                </Row>
+                <Row>
+                    <Col size="md-2"></Col>
+                    <Col size="md-8">
+                        <Map />
+                        <br></br>
+                    </Col>
+                    <Col size="md-2"></Col>
+                </Row>
+                <Row>
+                    <Col size="md-2"></Col>
+                    <Col size="md-8">
+                        <Images />
+                    </Col>
+                    <Col size="md-2"></Col>
+                </Row>
+                <Row>
+                    <Col size="md-12"><p>{this.state.park.directions}</p></Col>
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        <Link to="/">Back to Home</Link>
+                        <button>                    
+                            <Link to="/">Back to Home</Link>
+                        </button>
+                        {/* <Link to="/">Back to Home</Link> */}
                     </Col>
+                    <br></br>
                 </Row>
-            </Container>
+            </div>
 
         )
     }

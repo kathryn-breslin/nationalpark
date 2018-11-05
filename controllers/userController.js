@@ -1,7 +1,7 @@
 const db = require("../models");
 
 module.exports = {
-    find: function (req, res) {
+    findAll: function (req, res) {
         db.User.find().then(function (data) {
             res.json(data);
         }).catch(function (err) {
@@ -16,7 +16,7 @@ module.exports = {
                 res.json(err);
             })
     },
-    insert: function (req, res) {
+    create: function (req, res) {
         db.User.create(req.body).then(function (data) {
             res.json(data);
         }).catch(function (err) {

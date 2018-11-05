@@ -18,7 +18,7 @@ app.use(routes);
 // app.use(parkRoutes);
 // app.use(userRoutes);
 
-mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/nationalPark");
+mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/nationalParks");
 
 app.listen(PORT, function(){
   console.log("Connected on PORT: " + PORT);
