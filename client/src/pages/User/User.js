@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import ReactDom from "react-dom";
-import Popup from "react-popup";
+// import Popup from "react-popup";
 import Login from "../../components/Login";
 // import { Link } from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
@@ -13,50 +13,39 @@ class User extends Component {
         password: ""
     }
 
-    inputUser = event => {
-        this.setState({ username: event.target.value })
-        console.log("this.state.username", event.target.value)
-    }
-
-    inputPassword = event => {
-        this.setState({ password: event.target.value })
-        console.log("this.state.password", event.target.value)
-
-    }
-
     handleLoginInfo = event => {
         event.preventDefault();
-        console.log(this.state.username);
-        console.log(this.state.password);
-        if(this.state.username && this.state.password) {
-            API.saveUser({
-                username: this.state.username,
-                password: this.state.password
+        console.log("Signing up...", this.state)
+            API.saveUser(this.state).then(function (response) {
+                console.log(response)
             })
-            .then(res => this.loadConfirmation())
-            .catch(err => console.log(err));
-        }
+            this.loadConfirmation();
     }
 
-    loadConfirmation = () => {
-        return (
-            Popup.alert("Thanks for joining," + this.state.username + " !")
-        )
+    handleInput = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
+    // loadConfirmation = () => {
+    //     return (
+    //         Popup.alert("Thanks for joining," + this.state.username + " !")
+    //     )
+    // }
 
     render() {
         return (
             <div>
-                <Jumbotron>
-                    <h1>Join the NP Association</h1>
-                </Jumbotron>
-
+                <Jumbotron/>
+                <div id="popupContainer"></div>
+                {/* <Popup/> */}
                 <Container fluid>
                     <Row>
                         <Col size="md-12">
                             <Login
                                 inputUser={this.inputUser}
                                 inputPassword={this.inputPassword}
+                                handleLoginInfo={this.handleLoginInfo}
                                 loadConfirmation={this.loadConfirmation}
                             />
                         </Col>

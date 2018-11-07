@@ -1,12 +1,17 @@
 const db = require("../models");
 
 module.exports = {
-    findAll: function (req, res) {
-        db.User.find().then(function (data) {
-            res.json(data);
-        }).catch(function (err) {
-            res.json(err);
-        });
+    findOne: function (req, res) {
+        db.User.findOne({username: req.body.username}, function(error, response) {
+            if (error) {
+                return res.json(error)
+            } response.comparePassword(req.body.password, function(error, user) {
+                if (error){
+                    return res.json(error)
+                }
+                res.json(URLSearchParams)
+            })
+        })
     },
     findById: function (req, res) {
         db.User.findById(req.params.id)

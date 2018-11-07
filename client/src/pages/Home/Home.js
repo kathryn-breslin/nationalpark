@@ -44,6 +44,7 @@ class Home extends Component {
         console.log("Save me", parksArray);
         for(let i = 0; i < parksArray.length; i++){
             API.savePark(parksArray[i])
+            // API.savePark({ $push: { park: parksArray[i]}});
         }
     }
 
@@ -62,9 +63,9 @@ class Home extends Component {
                     name={park.name}
                     description={park.description}
                     url={park.url}  
-                    weather={park.weather}
-                    directions={park.directions}
-                    latLong={park.latLong}                                      
+                    // weather={park.weather}
+                    // directions={park.directions}
+                    // latLong={park.latLong}                                  
                 >
                 </ResultItem>
             </ResultList>
@@ -74,7 +75,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <Jumbotron><h1 id="homeText">National Park Search</h1></Jumbotron>
+                <Jumbotron></Jumbotron>
                 <Container fluid>
                     <Row>
                         <Col size="md-12">

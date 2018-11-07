@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import ParkPage from "../../components/ParkPage";
 import Map from "../../components/Map";
-import Images from "../../components/Images";
+import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
 import { Row, Col } from "../../components/Grid";
@@ -21,7 +21,7 @@ class Park extends Component {
         API.getPark(this.props.match.params.id)
             .then(res => this.setState({ park: res.data }))
             .catch(err => console.log(err));
-            this.getImages();
+        this.getImages();
     }
 
     // getMap() {
@@ -33,29 +33,45 @@ class Park extends Component {
     //             console.log("Location: " + keyword)
     //         })
     // }
+
     getImages() {
         const search = this.state.park.name;
         console.log("This is what should be searched: " + search)
-
-        // API.getImages(this.state.search)
-        //     .then((res) => {
-        //         this.setState({ images: res.data })
-        //         console.log("this.state.images: ", this.state.images)
-        //     })
+        const APIKEY = process.env.REACT_APP_FLICKR_API_KEY
+        fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + APIKEY + "&tags=" + search + "&per_page=8&format=json&nojsoncallback=1&auth_token=72157700037048532-538f2c9c3fe57043&api_sig=520722b13b6fd4532f9a49557eadcade"
+        ).then(function (res) {
+            console.log(res);
+            return res.json();
+        })
+            .then(function (res) {
+                let imagesArray = res.photos.photo.map((image) => {
+                    let imageUrl = "https://farm" + image.farm + ".staticflickr.com/" + image.server + "/" + image.id + "_" + image.secret + ".jpg"
+                    return (
+                        <img alt="search" src={imageUrl}></img>
+                    )
+                })
+                this.setState({ images: imagesArray })
+            }.bind(this))
     }
 
     render() {
         return (
-        <div>
+            <div>
                 <Row>
                     <Col size="md-12">
-                        <Jumbotron>
-                            <h1>{this.state.park.name}</h1>
-                        </Jumbotron>
+                        <Jumbotron />
                     </Col>
                 </Row>
                 <Row>
-                    <Col size="md-2"></Col>
+                    <Col size="md-12">
+                        <Header>
+                            {this.state.park.name}
+                        </Header>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col size="md-2">
+                    </Col>
                     <Col size="md-8">
                         <h5>
                             {this.state.park.description}
@@ -73,21 +89,19 @@ class Park extends Component {
                     <Col size="md-2"></Col>
                 </Row>
                 <Row>
-                    <Col size="md-2"></Col>
-                    <Col size="md-8">
-                        <Images />
+
+                    <Col size="md-12">
+                        {this.state.images}
                     </Col>
-                    <Col size="md-2"></Col>
                 </Row>
                 <Row>
                     <Col size="md-12"><p>{this.state.park.directions}</p></Col>
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        <button>                    
+                        <button>
                             <Link to="/">Back to Home</Link>
                         </button>
-                        {/* <Link to="/">Back to Home</Link> */}
                     </Col>
                     <br></br>
                 </Row>

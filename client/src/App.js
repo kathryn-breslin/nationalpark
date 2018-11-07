@@ -13,6 +13,7 @@ const App = () => (
       {/* <Route exact path="/parks" component={Park}/> */}
       <Route exact path="/api/parks/:id" component={Park}/>
       <Route exact path="/user" component={User}/>
+      <Route exact path="/api/user/:id" component={User}/>
     </div>
   </Router>
 

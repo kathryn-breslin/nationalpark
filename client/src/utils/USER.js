@@ -1,16 +1,16 @@
-import axios from "axios";
+// import axios from "axios";
 
-const USER = {
+// const USER = {
 
-    getUsers: function() {
-        return axios.get("/api/user")
-    },
-    getUser: function(id) {
-        return axios.get("/api/user/" + id)
-    },
-    saveUser: function(userData) {
-        return axios.post("/api/user/", userData)
-    }
-};
+//     getUsers: function() {
+//         return axios.get("/api/user")
+//     },
+//     getUser: function(id) {
+//         return axios.get("/api/user/" + id)
+//     },
+//     saveUser: function(userData) {
+//         return axios.post("/api/user/", userData)
+//     }
+// };
 
-export default USER;
+// export default USER;
