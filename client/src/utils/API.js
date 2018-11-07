@@ -34,7 +34,7 @@ const API = {
     },
 
     saveUser: function(userData) {
-        return axios.post("/api/user/", userData)
+        return axios.post("/api/user", userData)
     }
 }; 
 

@@ -13,30 +13,27 @@ class User extends Component {
         password: ""
     }
 
+    inputUser = event => {
+        this.setState({ username: event.target.value })
+        console.log("this.state.username", this.state.username)
+    }
+
+    inputPassword = event => {
+        this.setState({ password: event.target.value })
+        console.log("this.state.password", this.state.password)
+    }
+
     handleLoginInfo = event => {
         event.preventDefault();
         console.log("Signing up...", this.state)
-            API.saveUser(this.state).then(function (response) {
-                console.log(response)
-            })
-            this.loadConfirmation();
-    }
-
-    handleInput = event => {
-        this.setState({
-            [event.target.name]: event.target.value
+        API.saveUser(this.state).then(function(response) {
+            console.log(response)
         })
     }
-    // loadConfirmation = () => {
-    //     return (
-    //         Popup.alert("Thanks for joining," + this.state.username + " !")
-    //     )
-    // }
-
     render() {
         return (
             <div>
-                <Jumbotron/>
+                <Jumbotron />
                 <div id="popupContainer"></div>
                 {/* <Popup/> */}
                 <Container fluid>
@@ -46,7 +43,6 @@ class User extends Component {
                                 inputUser={this.inputUser}
                                 inputPassword={this.inputPassword}
                                 handleLoginInfo={this.handleLoginInfo}
-                                loadConfirmation={this.loadConfirmation}
                             />
                         </Col>
                     </Row>
