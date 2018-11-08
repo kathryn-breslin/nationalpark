@@ -21,7 +21,7 @@ class Park extends Component {
         API.getPark(this.props.match.params.id)
             .then(res => this.setState({ park: res.data }))
             .catch(err => console.log(err));
-        this.getImages();
+        // this.getImages();
     }
 
     // getMap() {
@@ -57,12 +57,7 @@ class Park extends Component {
     render() {
         return (
             <div>
-                <h1>Let's get something on the page</h1>
-                {/* <Jumbotron/>
-                <ParkPage>
-                    <h1>{this.state.park.name}</h1>
-                </ParkPage> */}
-                {/* <Row>
+                <Row>
                     <Col size="md-12">
                         <Jumbotron />
                     </Col>
@@ -109,7 +104,7 @@ class Park extends Component {
                         </button>
                     </Col>
                     <br></br>
-                </Row> */}
+                </Row>
             </div>
 
         )
