@@ -17,7 +17,17 @@ module.exports = {
             })
     },
     create: function (req, res) {
-        db.Park.create(req.body).then(function (data) {
+        // console.log("HELP MEEEE", req.body)
+        const park = {
+            name: req.body.fullName,
+            description: req.body.description,
+            url: req.body.url,
+            directions: req.body.directionsInfo,
+            weather: req.body.weatherInfo,
+            latLong: req.body.latLong
+        }
+        db.Park.create(park)
+        .then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
@@ -31,19 +41,13 @@ module.exports = {
                 res.json(err);
             });
     },
-    // remove: function (req, res) {
-    //     db.Park.findById({ _id: req.params.id })
-    //         .then(function (data) {
-    //             res.json(data);
-    //         }).catch(function (err) {
-    //             res.json(data);
-    //         })
-    // }
-    remove: function(req, res) {
-        db.Park.remove().then(function(data) {
-            res.json(data);
-        }).catch(function(err) {
-            res.json(err);
-        });
+    remove: function (req, res) {
+        db.Park.findById({ _id: req.params.id })
+            .then(function (data) {
+                res.json(data);
+            }).catch(function (err) {
+                res.json(data);
+            })
     }
+
 }

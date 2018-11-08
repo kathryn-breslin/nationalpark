@@ -13,17 +13,41 @@ class Home extends Component {
         searchTerm: "",
     };
 
-    // componentDidMount() {
-    //     this.loadParks();
+    componentDidMount() {
+        this.loadParks();
+    }
+
+    loadParks = () => {
+        API.getParks()
+            .then(res =>
+                this.setState({ parks: res.data })
+            )
+            .catch(err => console.log(err));
+    }
+
+    // handleClearPage = event => {
+    //     event.preventDefault();
+    //     console.log("Clearing page..");
+    //     API.deleteParks({})
     // }
 
-    // loadParks = () => {
-    //     API.getParks()
-    //         .then(res =>
-    //             this.setState({ parks: res.data })
-    //         )
-    //         .catch(err => console.log(err));
-    // }
+    showResults = () => {
+        return this.state.parks.map(park => (
+            <ResultList>
+                <ResultItem
+                    id={park._id} 
+                    key={park._id}
+                    name={park.name}
+                    description={park.description}
+                    url={park.url}  
+                    weather={park.weather}
+                    directions={park.directions}
+                    latLong={park.latLong}                                  
+                >
+                </ResultItem>
+            </ResultList>
+        ));
+    }
 
     handleSearch = event => {
         this.setState({ searchTerm: event.target.value })
@@ -44,32 +68,7 @@ class Home extends Component {
         console.log("Save me", parksArray);
         for(let i = 0; i < parksArray.length; i++){
             API.savePark(parksArray[i])
-            // API.savePark({ $push: { park: parksArray[i]}});
         }
-    }
-
-    // handleClearPage = event => {
-    //     event.preventDefault();
-    //     console.log("Clearing page..");
-    //     API.deleteParks({})
-    // }
-
-    showResults = () => {
-        return this.state.parks.map(park => (
-            <ResultList>
-                <ResultItem
-                    id={park._id} 
-                    key={park._id}
-                    name={park.name}
-                    description={park.description}
-                    url={park.url}  
-                    // weather={park.weather}
-                    // directions={park.directions}
-                    // latLong={park.latLong}                                  
-                >
-                </ResultItem>
-            </ResultList>
-        ));
     }
 
     render() {
@@ -83,7 +82,7 @@ class Home extends Component {
                                 handleSearch={this.handleSearch}
                                 handleFormSearch={this.handleFormSearch}
                                 showResults={this.showResults}
-                                handleClearPage={this.handleClearPage}
+                                // handleClearPage={this.handleClearPage}
                             />
                         </Col>
                     </Row>

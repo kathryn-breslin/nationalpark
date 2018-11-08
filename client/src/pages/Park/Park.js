@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ParkPage from "../../components/ParkPage";
+import ParkPage from "../../components/ParkPage";
 import Map from "../../components/Map";
 import Header from "../../components/Header";
 import { Link } from "react-router-dom";
@@ -57,7 +57,12 @@ class Park extends Component {
     render() {
         return (
             <div>
-                <Row>
+                <h1>Let's get something on the page</h1>
+                {/* <Jumbotron/>
+                <ParkPage>
+                    <h1>{this.state.park.name}</h1>
+                </ParkPage> */}
+                {/* <Row>
                     <Col size="md-12">
                         <Jumbotron />
                     </Col>
@@ -104,7 +109,7 @@ class Park extends Component {
                         </button>
                     </Col>
                     <br></br>
-                </Row>
+                </Row> */}
             </div>
 
         )

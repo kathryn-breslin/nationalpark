@@ -1,9 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-// const routes = require("./routes");
-const parkRoutes = require("./routes/parks");
-const userRoutes = require("./routes/user");
+const routes = require("./routes");
 
 const app = express();
 
@@ -14,9 +12,7 @@ app.use(express.json());
 
 app.use(express.static("client/public"));
 
-// app.use(routes);
-app.use(parkRoutes);
-app.use(userRoutes);
+app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/nationalParks");
 
