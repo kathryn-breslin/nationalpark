@@ -13,17 +13,17 @@ class Home extends Component {
         searchTerm: "",
     };
 
-    componentDidMount() {
-        this.loadParks();
-    }
+    // componentDidMount() {
+    //     this.loadParks();
+    // }
 
-    loadParks = () => {
-        API.getParks()
-            .then(res =>
-                this.setState({ parks: res.data })
-            )
-            .catch(err => console.log(err));
-    }
+    // loadParks = () => {
+    //     API.getParks()
+    //         .then(res =>
+    //             this.setState({ parks: res.data })
+    //         )
+    //         .catch(err => console.log(err));
+    // }
 
     handleSearch = event => {
         this.setState({ searchTerm: event.target.value })

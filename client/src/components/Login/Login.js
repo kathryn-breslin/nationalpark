@@ -13,6 +13,7 @@ const Login = props =>
                 <input name="passWord" onChange={props.inputPassword} type="text" className="form-control"/>
                 <br></br>
                 <button onClick={props.handleLoginInfo} type="text" className="btn btn-primary btn-lg btn-block">Join!</button>
+                {/* <a href={"/api/user/" + props.id} onClick={props.handleLoginInfo} onClick={props.handleUserInfo} className="btn btn-primary btn-lg btn-block">Join!</a> */}
             </form>
         </div>
     </div>

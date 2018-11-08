@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import ReactDom from "react-dom";
-// import Popup from "react-popup";
 import Login from "../../components/Login";
 // import { Link } from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
@@ -28,6 +26,12 @@ class User extends Component {
         console.log("Signing up...", this.state)
         API.saveUser(this.state).then(function(response) {
             console.log(response)
+            // if (response === true) {
+            //     response.redirect("/profile")
+            // }
+            // else {
+            //     alert("Your username and password are incorrect! Please try again")
+            // }
         })
     }
     render() {
