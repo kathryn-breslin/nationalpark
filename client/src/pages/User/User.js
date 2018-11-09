@@ -24,15 +24,16 @@ class User extends Component {
     handleLoginInfo = event => {
         event.preventDefault();
         console.log("Signing up...", this.state)
-        API.saveUser(this.state).then(function(response) {
-            console.log(response)
-            // if (response === true) {
-            //     response.redirect("/profile")
-            // }
-            // else {
-            //     alert("Your username and password are incorrect! Please try again")
-            // }
-        })
+        // API.saveUser(this.state).then(function(response) {
+            
+        //     console.log(response)
+        //     // if (response === true) {
+        //     //     response.redirect("/profile")
+        //     // }
+        //     // else {
+        //     //     alert("Your username and password are incorrect! Please try again")
+        //     // }
+        // })
     }
     render() {
         return (

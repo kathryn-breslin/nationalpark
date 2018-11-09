@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Flickr from "../../components/Flickr";
 import ParkPage from "../../components/ParkPage";
 import Map from "../../components/Map";
 import Header from "../../components/Header";
@@ -34,24 +35,23 @@ class Park extends Component {
     //         })
     // }
 
-    getImages() {
-        const search = this.state.park.name;
-        console.log("This is what should be searched: " + search)
-        const APIKEY = process.env.REACT_APP_FLICKR_API_KEY
-        fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + APIKEY + "&tags=" + search + "&per_page=8&format=json&nojsoncallback=1&auth_token=72157700037048532-538f2c9c3fe57043&api_sig=520722b13b6fd4532f9a49557eadcade"
-        ).then(function (res) {
-            console.log(res);
-            return res.json();
-        })
-            .then(function (res) {
-                let imagesArray = res.photos.photo.map((image) => {
-                    let imageUrl = "https://farm" + image.farm + ".staticflickr.com/" + image.server + "/" + image.id + "_" + image.secret + ".jpg"
-                    return (
-                        <img alt="search" src={imageUrl}></img>
-                    )
-                })
-                this.setState({ images: imagesArray })
-            }.bind(this))
+    getImages(park) {
+        console.log("This is what should be searched: " + this.state.getImages)
+        // const APIKEY = process.env.REACT_APP_FLICKR_API_KEY
+        // fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + APIKEY + "&tags=" + search + "&per_page=8&format=json&nojsoncallback=1&auth_token=72157700037048532-538f2c9c3fe57043&api_sig=520722b13b6fd4532f9a49557eadcade"
+        // ).then(function (res) {
+        //     console.log(res);
+        //     return res.json();
+        // })
+        //     .then(function (res) {
+        //         let imagesArray = res.photos.photo.map((image) => {
+        //             let imageUrl = "https://farm" + image.farm + ".staticflickr.com/" + image.server + "/" + image.id + "_" + image.secret + ".jpg"
+        //             return (
+        //                 <img alt="search" src={imageUrl}></img>
+        //             )
+        //         })
+        //         this.setState({ images: imagesArray })
+        //     }.bind(this))
     }
 
     render() {
@@ -91,11 +91,15 @@ class Park extends Component {
                 <Row>
 
                     <Col size="md-12">
-                        {this.state.images}
+                        <Flickr/>
                     </Col>
                 </Row>
                 <Row>
-                    <Col size="md-12"><p>{this.state.park.directions}</p></Col>
+                    <Col size="md-2"></Col>
+                    <Col size="md-8">
+                        <p>{this.state.park.directions}</p>
+                    </Col>
+                    <Col size="md-2"></Col>
                 </Row>
                 <Row>
                     <Col size="md-12">

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import { Container, Row, Col } from "../../components/Grid";
+import Header from "../../components/Header";
+import { FavoritesContainer, Favorites } from "../../components/FavoritesGroup"
 import API from "../../utils/API";
 
 class Login extends Component {
@@ -25,7 +27,16 @@ class Login extends Component {
                 <Container fluid>
                     <Row>
                         <Col size="md-12">
-                            <h1>{this.state.username}</h1>
+                            <Header>
+                                Welcome [USERNAME HERE]
+                            </Header>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col size="md-12">
+                            <FavoritesContainer>
+                                <Favorites/>
+                            </FavoritesContainer>
                         </Col>
                     </Row>
                 </Container>

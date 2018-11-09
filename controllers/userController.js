@@ -16,25 +16,31 @@ module.exports = {
                 res.json(err);
             })
     },
-    create: function (req, res) {
-        db.User.findOne({ username: req.body.username }, function(error, response) {
+    // create: function (req, res) {
+    //     const user ={
+    //         username: req.body.username,
+    //         password: req.body.password
+    //     }
+    //     db.User.create(user).then(function (data) {
+    //         res.json(data);
+    //     }).catch(function (err) {
+    //         res.json(err);
+    //     });
+    // },
+    create: function(req, res) {
+        db.User.findOne({ username: req.body.username }, function (error, response ) {
             if (error) {
                 return res.json(error)
             }
-            response.comparePassword(req.body.password, function(error, user) {
-                if(error) {
-                    return res.json(error)
+            response.comparePassword(req.body.password, function (error, user) {
+                if(error){
+                   return res.json(error)
                 }
-                res.json(user)
-                // res.redirect("/profile")
-            })
+                res.json(user);
+            });
         })
-        // db.User.create(req.body).then(function (data) {
-        //     res.json(data);
-        // }).catch(function (err) {
-        //     res.json(err);
-        // });
     },
+
     update: function (req, res) {
         db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(function (data) {

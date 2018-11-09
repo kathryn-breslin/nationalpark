@@ -35,6 +35,7 @@ const API = {
     },
 
     saveUser: function(userData) {
+        // console.log(userData)
         return axios.post("/api/user", userData)
     }
 }; 
