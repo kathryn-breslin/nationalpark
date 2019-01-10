@@ -6,4 +6,4 @@ This is a **full-stack React** application built to help users discover their ne
 
 Each individual response is built to either take the user through to it's unique page or the National Park's pre-built page. The unique pages for each park detail its location, using the **Google Maps API**, history of the Park and documented images,supported by the **Flickr API**.  
 
-This application is in it's first phase of production. It is built using React, Express, Mongoose, Axios, and various APIs including the National Parks API, Google Maps and Flickr.
+This application is in it's first phase of production. It is built using **React**, **Express**, **Mongoose**, **Axios**, and various APIs including the **National Parks API**, **Google Maps** and **Flickr**.
